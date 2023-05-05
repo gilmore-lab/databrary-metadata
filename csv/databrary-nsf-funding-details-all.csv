@@ -1,0 +1,63 @@
+agency,awardeeCity,awardeeName,awardeeStateCode,fundsObligatedAmt,id,piFirstName,piLastName,publicAccessMandate,date,title,response.serviceNotification.notificationType,response.serviceNotification.notificationCode,response.serviceNotification.notificationMessage
+NSF,NEW YORK,New York University,NY,2665719,1238599,Karen,Adolph,0,09/25/2012,Databrary:   An open video-based data-sharing system for developmental science,NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,385000,1147440,Rick,Gilmore,0,06/05/2012,The Development and Dynamics of Cortical Motion Processing,NA,NA,NA
+NSF,NEW YORK,New York University,NY,2500000,0721383,Catherine,Tamis-LeMonda,0,08/07/2007,"IRADS:  The Study of Culture, Social Settings, and Child Development across School Transitions",NA,NA,NA
+NSF,STATEN ISLAND,CUNY College of Staten Island,NY,77355,1349044,Lana,Karasik,0,01/22/2014,"Effects Of Traditional Cradling Practices On Infants' Physical, Motor, And Social Development",NA,NA,NA
+NSF,La Jolla,University of California-San Diego,CA,2650000,0808767,Javier,Movellan,0,08/26/2008,INT2-Large: Collaborative Research: Developing Social Robots,NA,NA,NA
+NSF,CORAL GABLES,University of Miami,FL,202002,1052736,Daniel,Messinger,0,06/14/2011,"Collaborative Research: Communication, Perturbation, and Early Development",NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,385000,1147440,Rick,Gilmore,0,06/05/2012,The Development and Dynamics of Cortical Motion Processing,NA,NA,NA
+NSF,NEWARK,Rutgers University Newark,NJ,284473,1247590,Vanessa,LoBue,0,05/22/2013,Validation of the Child Affective Facial Expressions Set (CAFE),NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,397307,0092452,Rick,Gilmore,0,02/09/2001,CAREER: The Development of Heading Perception in Infancy,NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,397307,0092452,Rick,Gilmore,0,02/09/2001,CAREER: The Development of Heading Perception in Infancy,NA,NA,NA
+NSF,NEW YORK,New York University,NY,337975,1147543,Marjorie,Rhodes,0,07/12/2012,The role of within-category variability in the development of induction,NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,385000,1147440,Rick,Gilmore,0,06/05/2012,The Development and Dynamics of Cortical Motion Processing,NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,385000,1147440,Rick,Gilmore,0,06/05/2012,The Development and Dynamics of Cortical Motion Processing,NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,385000,1147440,Rick,Gilmore,0,06/05/2012,The Development and Dynamics of Cortical Motion Processing,NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,385000,1147440,Rick,Gilmore,0,06/05/2012,The Development and Dynamics of Cortical Motion Processing,NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,800000,1248076,Yanxi,Liu,0,09/09/2012,INSPIRE: Symmetry Group-based Regularity Perception in Human and Computer Vision,NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,354257,1331073,Bradley,Wyble,0,07/27/2013,Integrating Spatial and Temporal Models of Visual Attention,NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,385000,1147440,Rick,Gilmore,0,06/05/2012,The Development and Dynamics of Cortical Motion Processing,NA,NA,NA
+NSF,Boston,Museum of Science,MA,2999827,1220305,Christine,Cunningham,0,09/06/2012,Exploring the Efficacy of Engineering is Elementary (E4),NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,385000,1147440,Rick,Gilmore,0,06/05/2012,The Development and Dynamics of Cortical Motion Processing,NA,NA,NA
+NSF,Villanova,Villanova University,PA,482889,1929935,DEENA,WEISBERG,1,04/09/2019,Young children's beliefs about causal systems: Learning about belief revision in the lab and in museums,NA,NA,NA
+NSF,PROVIDENCE,Brown University,RI,817795,1661068,David,Sobel,1,05/01/2017,Young children's beliefs about causal systems: Learning about belief revision in the lab and in museums,NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,385000,1147440,Rick,Gilmore,0,06/05/2012,The Development and Dynamics of Cortical Motion Processing,NA,NA,NA
+NSF,Villanova,Villanova University,PA,482889,1929935,DEENA,WEISBERG,1,04/09/2019,Young children's beliefs about causal systems: Learning about belief revision in the lab and in museums,NA,NA,NA
+NSF,PROVIDENCE,Brown University,RI,817795,1661068,David,Sobel,1,05/01/2017,Young children's beliefs about causal systems: Learning about belief revision in the lab and in museums,NA,NA,NA
+NSF,Villanova,Villanova University,PA,482889,1929935,DEENA,WEISBERG,1,04/09/2019,Young children's beliefs about causal systems: Learning about belief revision in the lab and in museums,NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,11668917,1255832,Michael,Verderame,0,08/12/2012,Graduate Research Fellowship Program (GRFP),NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,ERROR,AwardAPI-003,Parameter {id} was sent using invalid digits.
+NSF,University Park,Pennsylvania State Univ University Park,PA,800000,1248076,Yanxi,Liu,0,09/09/2012,INSPIRE: Symmetry Group-based Regularity Perception in Human and Computer Vision,NA,NA,NA
+NSF,NEW YORK,New York University,NY,293783,1627993,Karen,Adolph,0,07/27/2016,NSF/SBE-BSF: Neural patterns underlying the development of planning in action production and anticipation in action perception,NA,NA,NA
+NSF,IOWA CITY,University of Iowa,IA,249592,1561182,Susan,Cook,0,08/30/2016,Collaborative Research: Cognitive Mechanisms of Early Math Learning - Improving Outcomes by Harnessing Multiple Memory Representations,NA,NA,NA
+NSF,EAST LANSING,Michigan State University,MI,254004,1561122,Kimberly,Fenn,0,08/30/2016,Collaborative Research: Cognitive Mechanisms of Early Math Learning - Improving Outcomes by Harnessing Multiple Memory Representations,NA,NA,NA
+NSF,AMHERST,University of Massachusetts Amherst,MA,472086,1056805,Lisa,Scott,0,07/20/2011,CAREER:Perceptual Narrowing and Cortical Development in Infancy,NA,NA,NA
+NSF,AMHERST,University of Massachusetts Amherst,MA,472086,1056805,Lisa,Scott,0,07/20/2011,CAREER:Perceptual Narrowing and Cortical Development in Infancy,NA,NA,NA
+NSF,GAINESVILLE,University of Florida,FL,202503,1560810,Lisa,Scott,0,09/18/2015,CAREER:Perceptual Narrowing and Cortical Development in Infancy,NA,NA,NA
+NSF,GAINESVILLE,University of Florida,FL,202503,1560810,Lisa,Scott,0,09/18/2015,CAREER:Perceptual Narrowing and Cortical Development in Infancy,NA,NA,NA
+NSF,NEW YORK,New York University,NY,293783,1627993,Karen,Adolph,0,07/27/2016,NSF/SBE-BSF: Neural patterns underlying the development of planning in action production and anticipation in action perception,NA,NA,NA
+NSF,Villanova,Villanova University,PA,482889,1929935,DEENA,WEISBERG,1,04/09/2019,Young children's beliefs about causal systems: Learning about belief revision in the lab and in museums,NA,NA,NA
+NSF,PROVIDENCE,Brown University,RI,817795,1661068,David,Sobel,1,05/01/2017,Young children's beliefs about causal systems: Learning about belief revision in the lab and in museums,NA,NA,NA
+NSF,CORAL GABLES,University of Miami,FL,869999,1620294,Daniel,Messinger,0,08/12/2016,IBSS-L: Continuous Measurement of Children's Behavior and the Development of Social Dynamics,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,ERROR,AwardAPI-003,Parameter {id} was sent using invalid digits.
+NSF,ROCHESTER,Rochester Institute of Tech,NY,537997,1462280,Matt,Huenerfauth,0,09/15/2014,CHS: Medium: Collaborative Research: Immediate Feedback to Support Learning American Sign Language through Multisensory Recognition,NA,NA,NA
+NSF,New York,CUNY City College,NY,565918,1400802,YingLi,Tian,0,06/26/2014,CHS: Medium: Collaborative Research: Immediate Feedback to Support Learning American Sign Language through Multisensory Recognition,NA,NA,NA
+NSF,New York,CUNY Hunter College,NY,120000,1400810,Elaine,Gale,0,06/26/2014,CHS: Medium: Collaborative Research: Immediate Feedback to Support Learning American Sign Language through Multisensory Recognition,NA,NA,NA
+NSF,NEW YORK,New York University,NY,293783,1627993,Karen,Adolph,0,07/27/2016,NSF/SBE-BSF: Neural patterns underlying the development of planning in action production and anticipation in action perception,NA,NA,NA
+NSF,University Park,Pennsylvania State Univ University Park,PA,460814,1302741,Michelle,Vigeant,0,01/25/2013,CAREER: Importance of Late-Sound-Field Properties and Listener Envelopment to Room Acoustic Quality and Design,NA,NA,NA
+NSF,LOS ANGELES,University of California-Los Angeles,CA,555792,1655300,Hongjing,Lu,1,04/05/2017,Discovering Hierarchical Representations for Action Understanding,NA,NA,NA
+NSF,ROCHESTER,Rochester Institute of Tech,NY,537997,1462280,Matt,Huenerfauth,0,09/15/2014,CHS: Medium: Collaborative Research: Immediate Feedback to Support Learning American Sign Language through Multisensory Recognition,NA,NA,NA
+NSF,ROCHESTER,Rochester Institute of Tech,NY,349882,1749376,Matthew,Dye,1,05/17/2018,Collaborative Research: Multimethod Investigation of Articulatory and Perceptual Constraints on Natural Language Evolution,NA,NA,NA
+NSF,DAVIS,University of California-Davis,CA,305523,0951580,Lisa,Oakes,0,08/26/2010,Experience and cognitive development in infancy,NA,NA,NA
+NSF,NEW YORK,New York University,NY,495472,2043717,David,Poeppel,1,02/23/2021,Audiomotor Speech Rhythms and Their Perceptual Consequences,NA,NA,NA
+NSF,NEW YORK,New York University,NY,600000,1761053,Catherine,Tamis-LeMonda,1,08/22/2018,Collaborative Research: Math Cognition In Toddlers From Latino and White Families: Contributions Of Home Experiences With Mothers and Fathers,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,ERROR,AwardAPI-003,Parameter {id} was sent using invalid digits.
+NSF,AMHERST,University of Massachusetts Amherst,MA,472086,1056805,Lisa,Scott,0,07/20/2011,CAREER:Perceptual Narrowing and Cortical Development in Infancy,NA,NA,NA
+NSF,GAINESVILLE,University of Florida,FL,202503,1560810,Lisa,Scott,0,09/18/2015,CAREER:Perceptual Narrowing and Cortical Development in Infancy,NA,NA,NA
+NSF,GAINESVILLE,University of Florida,FL,516424,1728133,Lisa,Scott,1,07/07/2017,Reliable and Robust Infant Brain Responses During Face Learning,NA,NA,NA
+NSF,CORAL GABLES,University of Miami,FL,202002,1052736,Daniel,Messinger,0,06/14/2011,"Collaborative Research: Communication, Perturbation, and Early Development",NA,NA,NA
+NSF,Chicago,University of Chicago,IL,377342,1628300,Amanda,Woodward,0,08/18/2016,"Collaborative Research: Action, Learning, and Social Cognition",NA,NA,NA
+NSF,FORT COLLINS,Colorado State University,CO,12741385,1444758,Mazdak,Arabi,0,07/28/2015,SRN: Urban  Water Innovation Network (U-WIN): Transitioning Toward Sustainable Urban Water Systems,NA,NA,NA
+NSF,BOSTON,Northeastern University,MA,234794,1948790,Laura,Senier,1,03/30/2020,Water Unaffordability in the United States: Using Principles of Organizational Learning to Understand Municipal Capacity to Safeguard Water Access,NA,NA,NA
+NSF,RIVERSIDE,University of California-Riverside,CA,631076,1941449,John,Franchak,1,07/21/2020,Developmental cascades: How motor development alters everyday learning experiences,NA,NA,NA
+NSF,Princeton,"Kosie, Jessica Elizabeth",NJ,69000,2004983,Jessica,Kosie,1,06/30/2020,Neural and behavioral coordination in infant-caregiver communication across the socioeconomic spectrum,NA,NA,NA

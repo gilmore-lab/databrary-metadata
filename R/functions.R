@@ -1,23 +1,24 @@
 # R/functions.R
 
 #------------------------------------------------------------------------------
-select_nsf_funded_vols <- function(vb = TRUE,
-                                   db_login = Sys.getenv("DATABRARY_LOGIN")) {
-  stopifnot(is.logical(vb))
-  
-  if (db_login == "") {
-    message("DATABRARY_LOGIN not in ~/.Renviron")
-    db_login <-
-      readline(prompt = "Enter your Databrary login (email): ")
-    if (db_login == "" || !is.character(db_login)) {
-      stop("Invalid DATABRARY_LOGIN. Cannot continue.")
-    }
-  }
-  
-  if (!databraryapi::login_db(db_login)) {
-    stop("Databrary login failed.")
-  }
-}
+# TODO: Finish this function
+# select_nsf_funded_vols <- function(vb = TRUE,
+#                                    db_login = Sys.getenv("DATABRARY_LOGIN")) {
+#   stopifnot(is.logical(vb))
+#   
+#   if (db_login == "") {
+#     message("DATABRARY_LOGIN not in ~/.Renviron")
+#     db_login <-
+#       readline(prompt = "Enter your Databrary login (email): ")
+#     if (db_login == "" || !is.character(db_login)) {
+#       stop("Invalid DATABRARY_LOGIN. Cannot continue.")
+#     }
+#   }
+#   
+#   if (!databraryapi::login_db(db_login)) {
+#     stop("Databrary login failed.")
+#   }
+# }
 
 #------------------------------------------------------------------------------
 get_vol_nsf_awards <- function(vol_id = 1,
@@ -41,7 +42,7 @@ get_multiple_vol_nsf_awards <- function(vol_ids = 1:25,
   stopifnot(is.numeric(vol_ids))
   stopifnot(is.logical(vb))
   
-  purrr::map(vol_ids, get_vol_nsf_awards, .progress = TRUE) |>
+  purrr::map(vol_ids, get_vol_nsf_awards, .progress = vb) |>
     purrr::list_rbind()
 }
 
@@ -71,12 +72,15 @@ get_nsf_data_for_award_id <- function(nsf_award_id = 1052893,
     if (return_array) {
       resp <- unlist(httr::content(r))
       if (clean_names) {
+        if (is.null(resp)) {
+          return(NULL)
+        }
         old_names <- names(resp)
         new_names <-
           stringr::str_remove(old_names, "response\\.award\\.")
         names(resp) <- new_names
       }
-      if (as_tibble) {
+      if (as_tibble) {get
         resp |>
           as.list() |>
           tibble::as_tibble()
@@ -90,8 +94,8 @@ get_nsf_data_for_award_id <- function(nsf_award_id = 1052893,
 }
 
 #------------------------------------------------------------------------------
-get_mult_nsf_awards <- function(ids){
-  purrr::map(ids, get_nsf_data_for_award_id) |>
+get_mult_nsf_awards <- function(ids, vb = FALSE){
+  purrr::map(ids, get_nsf_data_for_award_id, .progress = vb) |>
     purrr::list_rbind()
 }
 
@@ -99,18 +103,20 @@ get_mult_nsf_awards <- function(ids){
 extract_award_id <- function(award_str = "BCS-1238599") {
   stopifnot(is.character(award_str))
   
-  award_id <- stringr::str_extract(award_str, "[0-9]+")
+  award_id <- stringr::str_remove_all(award_str, "-") |>
+    stringr::str_extract("[0-9]+")
   award_id
 }
 
 #------------------------------------------------------------------------------
 add_clean_nsf_award_id <-
-  function(nsf_award_df = get_vol_nsf_awards()) {
+  function(nsf_award_df = get_vol_nsf_awards(),
+           vb = FALSE) {
     stopifnot(is.data.frame(nsf_award_df))
     
     cleaned_ids <-
-      purrr::map(nsf_award_df$award, extract_award_id) |> unlist()
-    nsf_award_df$id <- cleaned_ids
+      purrr::map(nsf_award_df$award, extract_award_id, .progress = vb) |> unlist()
+    nsf_award_df$award_id <- cleaned_ids
     nsf_award_df
   }
 
