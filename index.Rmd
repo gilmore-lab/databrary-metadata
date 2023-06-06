@@ -3,8 +3,10 @@ title: "NSF Projects on Databrary"
 output: html_document
 date: "`r Sys.Date()`"
 params:
-  max_vol_id: 1600
-  vb: FALSE
+  max_vol_id: 1603
+  vb: TRUE
+  import_saved: TRUE
+  eval_test: FALSE
 ---
 
 ```{r setup, include=FALSE, message=FALSE}
@@ -34,7 +36,7 @@ For efficiency reasons, we test the workflow by limiting the number of Databrary
 
 The following chunks have been disabled (`eval = FALSE`).
 
-```{r retrieve-nsf-vol1-200, eval=FALSE}
+```{r retrieve-nsf-vol1-200, eval=params$eval_test}
 vols_1_200 <- get_multiple_vol_nsf_awards(1:200)
 ```
 
@@ -47,15 +49,15 @@ vols_1_200 |>
 
 ### Extract details from NSF
 
-```{r, eval=FALSE}
+```{r, eval=params$eval_test}
 vols_1_200_clean <- add_clean_nsf_award_id(vols_1_200)
 ```
 
-```{r get-nsf-award-info-vol1-200, eval=FALSE}
+```{r get-nsf-award-info-vol1-200, eval=params$eval_test}
 nsf_vols_1_200 <- get_mult_nsf_awards(vols_1_200_clean$award_id)
 ```
 
-```{r print-nsf-vol1-200, eval=FALSE}
+```{r print-nsf-vol1-200, eval=params$eval_test}
 nsf_vols_1_200 |>
   dplyr::select(-agency) |>
   dplyr::arrange(awardeeName, desc(date)) |>
@@ -66,14 +68,14 @@ nsf_vols_1_200 |>
 
 ### Save data
 
-```{r save-csvs, eval=FALSE}
-readr::write_csv(nsf_vols_1_200, "csv/databrary-nsf-funding-details.csv")
-readr::write_csv(vols_1_200_clean, "csv/databrary-vols-w-nsf-funding.csv")
+```{r save-csvs, eval=params$eval_test}
+readr::write_csv(nsf_vols_1_200, "csv/databrary-nsf-funding-details-TEST.csv")
+readr::write_csv(vols_1_200_clean, "csv/databrary-vols-w-nsf-funding-TEST.csv")
 ```
 
 ### Visualize data
 
-```{r nsf-award-histogram, fig.cap="Histogram of NSF awards for selected Databrary volumes", eval=FALSE}
+```{r nsf-award-histogram, fig.cap="Histogram of NSF awards for selected Databrary volumes", eval=params$eval_test}
 nsf_vols_1_200 |>
   dplyr::mutate(award_amt = as.numeric(fundsObligatedAmt)) |>
   ggplot2::ggplot() +
@@ -83,12 +85,25 @@ nsf_vols_1_200 |>
 
 ## Full dataset
 
+### Re-import
+
+We re-import the saved data for visualizations if `params$import_saved` == TRUE`.
+
+```{r import-saved, eval=params$import_saved}
+db_nsf <- readr::read_csv("csv/databrary-vols-w-nsf-funding-all.csv", show_col_types = FALSE)
+nsf <- readr::read_csv("csv/databrary-nsf-funding-details-all.csv", show_col_types = FALSE)
+```
+
 ### Extract NSF-funded projects from Databrary
 
-```{r get-all-db-vols-w-nsf}
+If `params$import_saved` == FALSE`, we regenerate the data.
+
+```{r get-all-db-vols-w-nsf, eval=!params$import_saved}
 db_nsf <- get_multiple_vol_nsf_awards(1:params$max_vol_id, vb = params$vb)
 db_nsf <- add_clean_nsf_award_id(db_nsf)
+```
 
+```{r show-table-databrary-vols-listing-nsf}
 db_nsf |>
   dplyr::select(vol_id, award) |>
   knitr::kable(format = 'html') |>
@@ -98,9 +113,11 @@ db_nsf |>
 
 ### Extract details from NSF
 
-```{r get-nsf-details-for-all}
+```{r get-nsf-details-for-all, eval=!params$import_saved}
 nsf <- get_mult_nsf_awards(db_nsf$award_id, vb = params$vb)
+```
 
+```{r show-table-nsf-info}
 nsf |>
   dplyr::select(-agency) |>
   dplyr::arrange(awardeeName, desc(date)) |>
@@ -108,16 +125,17 @@ nsf |>
   kableExtra::kable_material() |>
   kableExtra::scroll_box(width = "600px", height = "300px")
 ```
+
 ### Save data
 
-```{r save-csvs-all}
+```{r save-csvs-all, , eval=!params$import_saved}
 readr::write_csv(nsf, "csv/databrary-nsf-funding-details-all.csv")
 readr::write_csv(db_nsf, "csv/databrary-vols-w-nsf-funding-all.csv")
 ```
 
 ### Visualize
 
-```{r nsf-award-histogram-all, fig.cap="Histogram of NSF awards for all Databrary volumes as of `r Sys.Date()`"}
+```{r nsf-award-histogram-all, fig.cap="Histogram of NSF awards for all Databrary volumes."}
 nsf |>
   dplyr::mutate(award_amt = as.numeric(fundsObligatedAmt)) |>
   ggplot2::ggplot() +
@@ -125,9 +143,24 @@ nsf |>
   ggplot2::geom_histogram(bins=10)
 ```
 
-There are $n=$ `r dim(db_nsf)[1]` shared projects on Databrary that list NSF funding, with $n=$ `r dim(db_nsf$award_id)` unique NSF awards.
-Of these $n=$ `r length(unique(na.omit(nsf$id))` list NSF funding in a form that permits us to query the NSF API.
-The award amounts range from `r min(as.numeric(na.omit(nsf$fundsObligatedAmt)))` to `r max(as.numeric(na.omit(nsf$fundsObligatedAmt)))`, with a mean of `r mean(as.numeric(na.omit(nsf$fundsObligatedAmt)))` and a median of `r median(as.numeric(na.omit(nsf$fundsObligatedAmt)))`.
+There are $n=$ `r dim(db_nsf)[1]` Databrary volumes that list NSF as a funder.
+
+These represent $n=$ `r db_nsf$award_id |> na.omit() |> unique() |> length()` unique NSF awards.
+
+Of these, we were able to extract data from the NSF API for $n=$ `r nsf$id |> unique() |> length()` NSF awards.
+
+The following volumes do not have matching NSF awards.
+
+```{r}
+db_not_found_in_nsf <- !(db_nsf$award_id %in% nsf$id)
+
+db_nsf |>
+  dplyr::filter(db_not_found_in_nsf) |>
+  dplyr::select(vol_id, award) |>
+  knitr::kable(format = 'html') |>
+  kableExtra::kable_material() |>
+  kableExtra::scroll_box(width = "600px", height = "300px")
+```
 
 ## (TODO) Merge NSF and Databrary info
 
