@@ -1,43 +1,49 @@
 # R/functions.R
 
 #------------------------------------------------------------------------------
-# TODO: Finish this function
-# select_nsf_funded_vols <- function(vb = TRUE,
-#                                    db_login = Sys.getenv("DATABRARY_LOGIN")) {
-#   stopifnot(is.logical(vb))
-#   
-#   if (db_login == "") {
-#     message("DATABRARY_LOGIN not in ~/.Renviron")
-#     db_login <-
-#       readline(prompt = "Enter your Databrary login (email): ")
-#     if (db_login == "" || !is.character(db_login)) {
-#       stop("Invalid DATABRARY_LOGIN. Cannot continue.")
-#     }
-#   }
-#   
-#   if (!databraryapi::login_db(db_login)) {
-#     stop("Databrary login failed.")
-#   }
-# }
-
-#------------------------------------------------------------------------------
-get_vol_nsf_awards <- function(vol_id = 1,
-                               vb = TRUE) {
+get_vol_awards <- function(vol_id = 1,
+                           funder_str = ".*",
+                           vb = TRUE) {
   stopifnot(is.numeric(vol_id))
+  stopifnot(length(vol_id) > 1)
+  stopifnot(is.character(funder_str))
   stopifnot(is.logical(vb))
   
   vol_awards <- databraryapi::list_volume_funding(vol_id)
-  nsf_awards <- dplyr::filter(vol_awards,
-                              stringr::str_detect(funder_name, "NSF"))
-  if (dim(nsf_awards)[1] == 0) {
+  these_awards <- dplyr::filter(vol_awards,
+                                stringr::str_detect(funder_name, funder_str))
+  if (dim(these_awards)[1] == 0) {
     NULL
   } else {
-    nsf_awards
+    these_awards
   }
 }
 
 #------------------------------------------------------------------------------
+#' Get Volume Funding Information for Multiple Databrary Volumes
+#' 
+#' @param vols_ids An array of volume IDs
+#' @param funder_str A string (regex) to filter funder names. Default is ".*"
+#' but "NSF", "NICHD", "NIH", "NIMH", and "NIDA" should also work.
+#' @param vb Show verbose output.
+#' @returns A data frame with the funding information shared for the selected 
+#' Databrary volume or volumes.
+get_vols_awards <-
+  function(vols_ids = 1:5,
+           funder_str = ".*",
+           vb = FALSE) {
+    stopifnot(is.numeric(vols_ids))
+    stopifnot(vols_ids > 0)
+    stopifnot(is.character(funder_str))
+    stopifnot(is.logical(vb))
+    
+    purrr::map(vols_ids, get_vol_awards, funder_str, vb, .progress = TRUE) |>
+      purrr::list_rbind()
+  }
+
+#------------------------------------------------------------------------------
 get_multiple_vol_nsf_awards <- function(vol_ids = 1:25,
+                                        funder_str = "NSF",
                                         vb = TRUE) {
   stopifnot(is.numeric(vol_ids))
   stopifnot(is.logical(vb))
@@ -80,7 +86,8 @@ get_nsf_data_for_award_id <- function(nsf_award_id = 1052893,
           stringr::str_remove(old_names, "response\\.award\\.")
         names(resp) <- new_names
       }
-      if (as_tibble) {get
+      if (as_tibble) {
+        get
         resp |>
           as.list() |>
           tibble::as_tibble()
@@ -94,10 +101,12 @@ get_nsf_data_for_award_id <- function(nsf_award_id = 1052893,
 }
 
 #------------------------------------------------------------------------------
-get_mult_nsf_awards <- function(ids, vb = FALSE){
-  purrr::map(ids, get_nsf_data_for_award_id, .progress = vb) |>
-    purrr::list_rbind()
-}
+get_mult_nsf_awards <-
+  function(ids = c("1238599", "1147440"),
+           vb = FALSE) {
+    purrr::map(ids, get_nsf_data_for_award_id, .progress = vb) |>
+      purrr::list_rbind()
+  }
 
 #------------------------------------------------------------------------------
 extract_award_id <- function(award_str = "BCS-1238599") {
@@ -114,6 +123,9 @@ add_clean_nsf_award_id <-
            vb = FALSE) {
     stopifnot(is.data.frame(nsf_award_df))
     
+    if (is.null(nsf_award_df))
+      return(NULL)
+    
     cleaned_ids <-
       purrr::map(nsf_award_df$award, extract_award_id, .progress = vb) |> unlist()
     nsf_award_df$award_id <- cleaned_ids
@@ -122,13 +134,40 @@ add_clean_nsf_award_id <-
 
 
 #------------------------------------------------------------------------------
-# NOT WORKING YET
 merge_databrary_nsf_award_df <- function(vol_id = 15) {
-  db_nsf_awards_df <- get_vol_nsf_awards(vol_id) |>
-    dplyr::filter(!is.null()) |>
-    add_clean_nsf_award_id()
+  # Get NSF award(s) info from Databrary
+  db_nsf_awards_df <- get_vol_awards(vol_id, funder_str = "NSF")
   
-  nsf_awards_df <- get_mult_nsf_awards(db_nsf_awards_df$id)
+  # Add cleaned NSF award IDs, lookup data on NSF, and combine Databrary with
+  # NSF info
+  if (!is.null(db_nsf_awards_df)) {
+    db_nsf_awards_clean_df <- db_nsf_awards_df |>
+      add_clean_nsf_award_id()
+    
+    nsf_awards_df <-
+      get_mult_nsf_awards(db_nsf_awards_clean_df$award_id)
+    
+    dplyr::left_join(db_nsf_awards_clean_df,
+                     nsf_awards_df,
+                     by = c("award_id" = "id")) |>
+      dplyr::select(-funder_id,-award,-agency) |>
+      dplyr::mutate(awardeeCity = stringr::str_to_title(awardeeCity))
+  } else {
+    NULL
+  }
+}
+
+#------------------------------------------------------------------------------
+#' Summarize NSF Award Data from Multiple Databrary Volumes.
+#'
+#' @param vol_ids One or more Databrary volume IDs.
+#' @returns A data frame (tibble) that combines the Databrary and NSF database
+#' information about the awards from the set of volumes.
+#' @export
+#' @example summarize_mult_vol_nsf_awards()
+summarize_mult_vol_nsf_awards <- function(vol_ids = 1:25) {
+  stopifnot(is.numeric(vol_ids))
   
-  dplyr::left_join(db_nsf_awards_df, nsf_awards_df, by = "id")
+  purrr::map(1:25, merge_databrary_nsf_award_df, .progress = "NSF awards: ") |>
+    purrr::list_rbind()
 }
