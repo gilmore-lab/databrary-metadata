@@ -5,7 +5,7 @@ get_vol_awards <- function(vol_id = 1,
                            funder_str = ".*",
                            vb = TRUE) {
   stopifnot(is.numeric(vol_id))
-  stopifnot(length(vol_id) > 1)
+  stopifnot(length(vol_id) > 0)
   stopifnot(is.character(funder_str))
   stopifnot(is.logical(vb))
   
@@ -17,6 +17,10 @@ get_vol_awards <- function(vol_id = 1,
   } else {
     these_awards
   }
+}
+
+get_vol_nsf_awards <- function(vol_id = 1, funder_str = "NSF", vb = FALSE) {
+  get_vol_awards(vol_id, funder_str, vb)
 }
 
 #------------------------------------------------------------------------------
@@ -55,9 +59,16 @@ get_multiple_vol_nsf_awards <- function(vol_ids = 1:25,
 
 #------------------------------------------------------------------------------
 # https://www.research.gov/common/webapi/awardapisearch-v1.htm
-#
+#' Get NSF funding data for an NSF award ID
+#' 
+#' @param nsf_award_id The NSF award ID number.
+#' @param format The type of data to extract from NSF; 'json' or 'xml'.
+#' @param return_array Return a tabular array of data or not.
+#' @param clean_names Clean up the field names or not.
+#' @param as_tibble Convert to a tibble or not.
+#' @example get_nsf_data_for_award_id()
 # http://api.nsf.gov/services/v1/awards/1052893.json
-get_nsf_data_for_award_id <- function(nsf_award_id = 1052893,
+get_nsf_data_for_award_id <- function(nsf_award_id = 1238599,
                                       format = "json",
                                       return_array = TRUE,
                                       clean_names = TRUE,
@@ -87,16 +98,72 @@ get_nsf_data_for_award_id <- function(nsf_award_id = 1052893,
         names(resp) <- new_names
       }
       if (as_tibble) {
-        get
+        # get
         resp |>
           as.list() |>
-          tibble::as_tibble()
+          tibble::as_tibble() |>
+          dplyr::mutate(awardeeCity = stringr::str_to_title(awardeeCity))
       } else {
         resp
       }
     } else {
       httr::content(r)
     }
+  }
+}
+
+#------------------------------------------------------------------------------
+# https://www.research.gov/common/webapi/awardapisearch-v1.htm
+#
+# http://api.nsf.gov/services/v1/awards/1052893.json
+get_nsf_data_for_keyword <- function(nsf_keyword = "databrary",
+                                      format = "json",
+                                      return_array = TRUE,
+                                      clean_names = TRUE,
+                                      as_tibble = TRUE) {
+  stopifnot(is.character(nsf_keyword))
+  stopifnot(is.character(format))
+  stopifnot(is.logical(return_array))
+  stopifnot(is.logical(clean_names))
+  stopifnot(is.logical(as_tibble))
+  
+  REQ_URL = paste0("http://api.nsf.gov/services/v1/awards.", format, "?keyword=",
+                   nsf_keyword)
+  
+  r <- httr::GET(url = REQ_URL)
+  if (httr::status_code(r) == 200) {
+    if (return_array) {
+      resp <- unlist(httr::content(r), recursive = FALSE)
+      resps <- resp$response.award
+      df <- do.call(rbind.data.frame, resps) |>
+        dplyr::mutate(awardeeCity = stringr::str_to_title(awardeeCity))
+      if (as_tibble) {
+        tibble::as_tibble(df)
+      } else {
+        df
+      }
+    } else {
+      httr::content(r)
+    }
+  }
+}
+
+get_nsf_data_for_pi <- function(pi_last = "adolph", pi_first = "karen") {
+  stopifnot(is.character(pi_last))
+  stopifnot(is.character(pi_first))
+  
+  this_df <- get_nsf_data_for_keyword(pi_last)
+  
+  if (!is.null(this_df)) {
+    out_df <- this_df |>
+      dplyr::filter(stringr::str_detect(piLastName, stringr::str_to_title(pi_last)))
+    if (pi_first != "") {
+      out_df <- out_df |>
+        dplyr::filter(stringr::str_detect(piFirstName, stringr::str_to_title(pi_first)))
+    }
+    out_df
+  } else {
+    NULL
   }
 }
 

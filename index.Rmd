@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Purpose
 
-This document describes the process for providing full funding data for projects shared on Databrary that list the U.S. National Science Foundation as a funding source.
+This document describes the process for providing full funding data for projects shared on Databrary that list the U.S. National Science Foundation as a funding source [^1].
 
 Databrary stores a funding name, and a text field with the award ID, but it does not include the project title, funding amount, or other data related to an award.
 That data is available, however, from the NSF.
@@ -99,6 +99,9 @@ nsf <- readr::read_csv("csv/databrary-nsf-funding-details-all.csv", show_col_typ
 If `params$import_saved` == FALSE`, we regenerate the data.
 
 ```{r get-all-db-vols-w-nsf, eval=!params$import_saved}
+message("Regenerating all data.")
+
+message("Gathering NSF-funded projects from Databrary.")
 db_nsf <- get_multiple_vol_nsf_awards(1:params$max_vol_id, vb = params$vb)
 db_nsf <- add_clean_nsf_award_id(db_nsf)
 ```
@@ -114,7 +117,15 @@ db_nsf |>
 ### Extract details from NSF
 
 ```{r get-nsf-details-for-all, eval=!params$import_saved}
+message("Adding funding details from NSF.gov")
 nsf <- get_mult_nsf_awards(db_nsf$award_id, vb = params$vb)
+```
+
+### Clean data
+
+```{r}
+nsf <- nsf |>
+  dplyr::mutate(awardeeCity = stringr::str_to_title(awardeeCity))
 ```
 
 ```{r show-table-nsf-info}
@@ -162,6 +173,12 @@ db_nsf |>
   kableExtra::scroll_box(width = "600px", height = "300px")
 ```
 
-## (TODO) Merge NSF and Databrary info
+A next step would be to identify the PIs on these volumes and contact them.
+
+## Cleanup
+
+```{r}
+databraryapi::logout_db()
+```
 
 [^1]: In a form that permits us to query the NSF API.

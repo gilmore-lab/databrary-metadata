@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2023-06-06" />
+<meta name="date" content="2023-06-27" />
 
 <title>NSF Projects on Databrary</title>
 
@@ -574,7 +574,7 @@ display: none;
 
 
 <h1 class="title toc-ignore">NSF Projects on Databrary</h1>
-<h4 class="date">2023-06-06</h4>
+<h4 class="date">2023-06-27</h4>
 
 </div>
 
@@ -583,7 +583,7 @@ display: none;
 <h2>Purpose</h2>
 <p>This document describes the process for providing full funding data
 for projects shared on Databrary that list the U.S. National Science
-Foundation as a funding source.</p>
+Foundation as a funding source <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
 <p>Databrary stores a funding name, and a text field with the award ID,
 but it does not include the project title, funding amount, or other data
 related to an award. That data is available, however, from the NSF.</p>
@@ -646,8 +646,1042 @@ nsf &lt;- readr::read_csv(&quot;csv/databrary-nsf-funding-details-all.csv&quot;,
 <h3>Extract NSF-funded projects from Databrary</h3>
 <p>If <code>params$import_saved</code> == FALSE`, we regenerate the
 data.</p>
-<pre class="r"><code>db_nsf &lt;- get_multiple_vol_nsf_awards(1:params$max_vol_id, vb = params$vb)
-db_nsf &lt;- add_clean_nsf_award_id(db_nsf)</code></pre>
+<pre class="r"><code>message(&quot;Regenerating all data.&quot;)</code></pre>
+<pre><code>## Regenerating all data.</code></pre>
+<pre class="r"><code>message(&quot;Gathering NSF-funded projects from Databrary.&quot;)</code></pre>
+<pre><code>## Gathering NSF-funded projects from Databrary.</code></pre>
+<pre class="r"><code>db_nsf &lt;- get_multiple_vol_nsf_awards(1:params$max_vol_id, vb = params$vb)</code></pre>
+<pre><code>## ■ 1% | ETA: 2m</code></pre>
+<pre><code>## ■ 1% | ETA: 2m
+
+ ■ 1% | ETA: 2m
+
+ ■■ 2% | ETA: 2m
+
+ ■■ 2% | ETA: 2m
+
+ ■■ 2% | ETA: 2m
+
+ ■■ 2% | ETA: 2m
+
+ ■■ 3% |
+## ETA: 2m
+
+ ■■ 3% | ETA: 2m
+
+ ■■ 3% | ETA: 2m
+
+ ■■ 3% | ETA: 2m
+
+ ■■ 3% | ETA: 2m
+
+ ■■ 4% | ETA: 1m
+
+ ■■ 4% | ETA: 1m
+
+
+## ■■ 4% | ETA: 1m
+
+ ■■ 4% | ETA: 1m
+
+ ■■ 5% | ETA: 1m
+
+ ■■ 5% | ETA: 1m
+
+ ■■■ 5% | ETA: 1m
+
+ ■■■ 5% | ETA: 1m
+
+ ■■■ 6%
+## | ETA: 1m
+
+ ■■■ 6% | ETA: 1m
+
+ ■■■ 6% | ETA: 1m
+
+ ■■■ 6% | ETA: 1m
+
+ ■■■ 7% | ETA: 1m
+
+ ■■■ 7% | ETA: 1m
+
+ ■■■ 7% |
+## ETA: 1m
+
+ ■■■ 7% | ETA: 1m
+
+ ■■■ 7% | ETA: 1m
+
+ ■■■ 8% | ETA: 1m
+
+ ■■■ 8% | ETA: 1m
+
+ ■■■ 8% | ETA: 1m
+
+ ■■■■ 8% |
+## ETA: 1m
+
+ ■■■■ 9% | ETA: 1m
+
+ ■■■■ 9% | ETA: 1m
+
+ ■■■■ 9% | ETA: 1m
+
+ ■■■■ 9% | ETA: 1m
+
+ ■■■■ 10% | ETA: 1m
+
+ ■■■■
+## 10% | ETA: 1m
+
+ ■■■■ 10% | ETA: 1m
+
+ ■■■■ 10% | ETA: 1m
+
+ ■■■■ 10% | ETA: 1m
+
+ ■■■■ 11% | ETA: 1m
+
+ ■■■■ 11% |
+## ETA: 1m
+
+ ■■■■ 11% | ETA: 1m
+
+ ■■■■ 11% | ETA: 1m
+
+ ■■■■ 11% | ETA: 1m
+
+ ■■■■■ 12% | ETA: 1m
+
+ ■■■■■ 12% | ETA: 1m
+
+
+## ■■■■■ 12% | ETA: 1m
+
+ ■■■■■ 12% | ETA: 1m
+
+ ■■■■■ 13% | ETA: 1m
+
+ ■■■■■ 13% | ETA: 1m
+
+ ■■■■■ 13% | ETA: 1m
+
+
+## ■■■■■ 13% | ETA: 1m
+
+ ■■■■■ 14% | ETA: 1m
+
+ ■■■■■ 14% | ETA: 1m
+
+ ■■■■■ 14% | ETA: 1m
+
+ ■■■■■ 14% | ETA: 1m
+
+
+## ■■■■■ 14% | ETA: 1m
+
+ ■■■■■ 15% | ETA: 1m
+
+ ■■■■■ 15% | ETA: 1m
+
+ ■■■■■■ 15% | ETA: 1m
+
+ ■■■■■■ 15% | ETA: 1m
+
+
+## ■■■■■■ 16% | ETA: 1m
+
+ ■■■■■■ 16% | ETA: 1m
+
+ ■■■■■■ 16% | ETA: 1m
+
+ ■■■■■■ 16% | ETA: 1m
+
+ ■■■■■■ 17% | ETA: 1m
+
+
+## ■■■■■■ 17% | ETA: 1m
+
+ ■■■■■■ 17% | ETA: 1m
+
+ ■■■■■■ 17% | ETA: 1m
+
+ ■■■■■■ 17% | ETA: 1m
+
+ ■■■■■■ 18% | ETA: 1m
+
+
+## ■■■■■■ 18% | ETA: 1m
+
+ ■■■■■■ 18% | ETA: 1m
+
+ ■■■■■■■ 18% | ETA: 1m
+
+ ■■■■■■■ 19% | ETA: 1m
+
+ ■■■■■■■ 19% | ETA:
+## 1m
+
+ ■■■■■■■ 19% | ETA: 1m
+
+ ■■■■■■■ 19% | ETA: 1m
+
+ ■■■■■■■ 20% | ETA: 1m
+
+ ■■■■■■■ 20% | ETA: 1m
+
+ ■■■■■■■ 20% |
+## ETA: 1m
+
+ ■■■■■■■ 20% | ETA: 1m
+
+ ■■■■■■■ 20% | ETA: 1m
+
+ ■■■■■■■ 21% | ETA: 1m
+
+ ■■■■■■■ 21% | ETA: 1m
+
+ ■■■■■■■
+## 21% | ETA: 1m
+
+ ■■■■■■■ 21% | ETA: 1m
+
+ ■■■■■■■ 22% | ETA: 1m
+
+ ■■■■■■■■ 22% | ETA: 1m
+
+ ■■■■■■■■ 22% | ETA: 1m
+
+
+## ■■■■■■■■ 22% | ETA: 1m
+
+ ■■■■■■■■ 22% | ETA: 1m
+
+ ■■■■■■■■ 23% | ETA: 1m
+
+ ■■■■■■■■ 23% | ETA: 1m
+
+ ■■■■■■■■ 23%
+## | ETA: 1m
+
+ ■■■■■■■■ 23% | ETA: 1m
+
+ ■■■■■■■■ 24% | ETA: 1m
+
+ ■■■■■■■■ 24% | ETA: 1m
+
+ ■■■■■■■■ 24% | ETA: 1m
+
+
+## ■■■■■■■■ 24% | ETA: 1m
+
+ ■■■■■■■■ 24% | ETA: 1m
+
+ ■■■■■■■■ 25% | ETA: 1m
+
+ ■■■■■■■■ 25% | ETA: 1m
+
+ ■■■■■■■■■
+## 25% | ETA: 1m
+
+ ■■■■■■■■■ 25% | ETA: 1m
+
+ ■■■■■■■■■ 25% | ETA: 1m
+
+ ■■■■■■■■■ 26% | ETA: 1m
+
+ ■■■■■■■■■ 26% |
+## ETA: 1m
+
+ ■■■■■■■■■ 26% | ETA: 1m
+
+ ■■■■■■■■■ 26% | ETA: 1m
+
+ ■■■■■■■■■ 26% | ETA: 1m
+
+ ■■■■■■■■■ 27% | ETA: 1m
+
+
+## ■■■■■■■■■ 27% | ETA: 1m
+
+ ■■■■■■■■■ 27% | ETA: 1m
+
+ ■■■■■■■■■ 27% | ETA: 1m
+
+ ■■■■■■■■■ 27% | ETA: 1m
+
+
+## ■■■■■■■■■ 28% | ETA: 1m
+
+ ■■■■■■■■■ 28% | ETA: 1m
+
+ ■■■■■■■■■ 28% | ETA: 1m
+
+ ■■■■■■■■■■ 28% | ETA: 1m
+
+
+## ■■■■■■■■■■ 29% | ETA: 1m
+
+ ■■■■■■■■■■ 29% | ETA: 1m
+
+ ■■■■■■■■■■ 29% | ETA: 1m
+
+ ■■■■■■■■■■ 29% | ETA: 1m
+
+
+## ■■■■■■■■■■ 29% | ETA: 1m
+
+ ■■■■■■■■■■ 30% | ETA: 1m
+
+ ■■■■■■■■■■ 30% | ETA: 1m
+
+ ■■■■■■■■■■ 30% | ETA: 1m
+
+
+## ■■■■■■■■■■ 30% | ETA: 1m
+
+ ■■■■■■■■■■ 31% | ETA: 1m
+
+ ■■■■■■■■■■ 31% | ETA: 1m
+
+ ■■■■■■■■■■ 31% | ETA: 1m
+
+
+## ■■■■■■■■■■ 31% | ETA: 1m
+
+ ■■■■■■■■■■ 32% | ETA: 1m
+
+ ■■■■■■■■■■■ 32% | ETA: 1m
+
+ ■■■■■■■■■■■ 32% | ETA: 1m
+
+
+## ■■■■■■■■■■■ 32% | ETA: 1m
+
+ ■■■■■■■■■■■ 33% | ETA: 1m
+
+ ■■■■■■■■■■■ 33% | ETA: 1m
+
+ ■■■■■■■■■■■ 33% | ETA: 1m
+
+
+## ■■■■■■■■■■■ 33% | ETA: 1m
+
+ ■■■■■■■■■■■ 33% | ETA: 1m
+
+ ■■■■■■■■■■■ 34% | ETA: 1m
+
+ ■■■■■■■■■■■ 34% | ETA: 1m
+
+
+## ■■■■■■■■■■■ 34% | ETA: 1m
+
+ ■■■■■■■■■■■ 34% | ETA: 1m
+
+ ■■■■■■■■■■■ 34% | ETA: 1m
+
+ ■■■■■■■■■■■ 35% | ETA: 1m
+
+
+## ■■■■■■■■■■■ 35% | ETA: 1m
+
+ ■■■■■■■■■■■■ 35% | ETA: 1m
+
+ ■■■■■■■■■■■■ 35% | ETA: 1m
+
+ ■■■■■■■■■■■■ 36% | ETA:
+## 1m
+
+ ■■■■■■■■■■■■ 36% | ETA: 1m
+
+ ■■■■■■■■■■■■ 36% | ETA: 1m
+
+ ■■■■■■■■■■■■ 36% | ETA: 1m
+
+ ■■■■■■■■■■■■ 37% |
+## ETA: 1m
+
+ ■■■■■■■■■■■■ 37% | ETA: 1m
+
+ ■■■■■■■■■■■■ 37% | ETA: 1m
+
+ ■■■■■■■■■■■■ 37% | ETA: 1m
+
+ ■■■■■■■■■■■■
+## 37% | ETA: 1m
+
+ ■■■■■■■■■■■■ 37% | ETA: 1m
+
+ ■■■■■■■■■■■■ 38% | ETA: 1m
+
+ ■■■■■■■■■■■■ 38% | ETA: 1m
+
+
+## ■■■■■■■■■■■■ 38% | ETA: 1m
+
+ ■■■■■■■■■■■■ 38% | ETA: 1m
+
+ ■■■■■■■■■■■■ 38% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 38% |
+## ETA: 1m
+
+ ■■■■■■■■■■■■■ 39% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 39% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 39% | ETA: 1m
+
+
+## ■■■■■■■■■■■■■ 39% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 39% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 40% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 40% |
+## ETA: 1m
+
+ ■■■■■■■■■■■■■ 40% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 40% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 40% | ETA: 1m
+
+
+## ■■■■■■■■■■■■■ 40% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 41% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 41% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 41% |
+## ETA: 1m
+
+ ■■■■■■■■■■■■■ 41% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 41% | ETA: 1m
+
+ ■■■■■■■■■■■■■ 42% | ETA: 1m
+
+
+## ■■■■■■■■■■■■■■ 42% | ETA: 1m
+
+ ■■■■■■■■■■■■■■ 42% | ETA: 1m
+
+ ■■■■■■■■■■■■■■ 42% | ETA: 1m
+
+ ■■■■■■■■■■■■■■
+## 42% | ETA: 1m
+
+ ■■■■■■■■■■■■■■ 43% | ETA: 1m
+
+ ■■■■■■■■■■■■■■ 43% | ETA: 1m
+
+ ■■■■■■■■■■■■■■ 43% | ETA: 1m
+
+
+## ■■■■■■■■■■■■■■ 43% | ETA: 1m
+
+ ■■■■■■■■■■■■■■ 43% | ETA: 1m
+
+ ■■■■■■■■■■■■■■ 43% | ETA: 1m
+
+ ■■■■■■■■■■■■■■
+## 44% | ETA: 1m
+
+ ■■■■■■■■■■■■■■ 44% | ETA: 1m
+
+ ■■■■■■■■■■■■■■ 44% | ETA: 1m
+
+ ■■■■■■■■■■■■■■ 44% | ETA: 1m
+
+
+## ■■■■■■■■■■■■■■ 45% | ETA: 1m
+
+ ■■■■■■■■■■■■■■ 45% | ETA: 1m
+
+ ■■■■■■■■■■■■■■ 45% | ETA: 1m
+
+ ■■■■■■■■■■■■■■■
+## 45% | ETA: 1m
+
+ ■■■■■■■■■■■■■■■ 45% | ETA: 1m
+
+ ■■■■■■■■■■■■■■■ 46% | ETA: 1m
+
+ ■■■■■■■■■■■■■■■ 46% | ETA: 1m
+
+
+## ■■■■■■■■■■■■■■■ 46% | ETA: 1m
+
+ ■■■■■■■■■■■■■■■ 46% | ETA: 1m
+
+ ■■■■■■■■■■■■■■■ 47% | ETA: 1m
+
+
+## ■■■■■■■■■■■■■■■ 47% | ETA: 1m
+
+ ■■■■■■■■■■■■■■■ 47% | ETA: 50s
+
+ ■■■■■■■■■■■■■■■ 47% | ETA: 50s
+
+
+## ■■■■■■■■■■■■■■■ 47% | ETA: 50s
+
+ ■■■■■■■■■■■■■■■ 48% | ETA: 49s
+
+ ■■■■■■■■■■■■■■■ 48% | ETA: 49s
+
+
+## ■■■■■■■■■■■■■■■ 48% | ETA: 49s
+
+ ■■■■■■■■■■■■■■■ 48% | ETA: 49s
+
+ ■■■■■■■■■■■■■■■■ 48% | ETA: 49s
+
+
+## ■■■■■■■■■■■■■■■■ 49% | ETA: 48s
+
+ ■■■■■■■■■■■■■■■■ 49% | ETA: 48s
+
+ ■■■■■■■■■■■■■■■■ 49% | ETA: 48s
+
+
+## ■■■■■■■■■■■■■■■■ 49% | ETA: 48s
+
+ ■■■■■■■■■■■■■■■■ 50% | ETA: 48s
+
+ ■■■■■■■■■■■■■■■■ 50% | ETA: 47s
+
+
+## ■■■■■■■■■■■■■■■■ 50% | ETA: 47s
+
+ ■■■■■■■■■■■■■■■■ 50% | ETA: 47s
+
+ ■■■■■■■■■■■■■■■■ 50% | ETA: 47s
+
+
+## ■■■■■■■■■■■■■■■■ 51% | ETA: 47s
+
+ ■■■■■■■■■■■■■■■■ 51% | ETA: 46s
+
+ ■■■■■■■■■■■■■■■■ 51% | ETA: 46s
+
+
+## ■■■■■■■■■■■■■■■■ 51% | ETA: 46s
+
+ ■■■■■■■■■■■■■■■■ 52% | ETA: 46s
+
+ ■■■■■■■■■■■■■■■■■ 52% | ETA: 45s
+
+
+## ■■■■■■■■■■■■■■■■■ 52% | ETA: 45s
+
+ ■■■■■■■■■■■■■■■■■ 52% | ETA: 45s
+
+ ■■■■■■■■■■■■■■■■■ 52% | ETA: 45s
+
+
+## ■■■■■■■■■■■■■■■■■ 53% | ETA: 45s
+
+ ■■■■■■■■■■■■■■■■■ 53% | ETA: 44s
+
+ ■■■■■■■■■■■■■■■■■ 53% | ETA: 44s
+
+
+## ■■■■■■■■■■■■■■■■■ 53% | ETA: 44s
+
+ ■■■■■■■■■■■■■■■■■ 54% | ETA: 44s
+
+ ■■■■■■■■■■■■■■■■■ 54% | ETA: 44s
+
+
+## ■■■■■■■■■■■■■■■■■ 54% | ETA: 43s
+
+ ■■■■■■■■■■■■■■■■■ 54% | ETA: 43s
+
+ ■■■■■■■■■■■■■■■■■ 54% | ETA: 43s
+
+
+## ■■■■■■■■■■■■■■■■■ 55% | ETA: 43s
+
+ ■■■■■■■■■■■■■■■■■ 55% | ETA: 42s
+
+ ■■■■■■■■■■■■■■■■■■ 55% | ETA: 42s
+
+
+## ■■■■■■■■■■■■■■■■■■ 55% | ETA: 42s
+
+ ■■■■■■■■■■■■■■■■■■ 56% | ETA: 42s
+
+ ■■■■■■■■■■■■■■■■■■ 56% | ETA: 41s
+
+
+## ■■■■■■■■■■■■■■■■■■ 56% | ETA: 41s
+
+ ■■■■■■■■■■■■■■■■■■ 56% | ETA: 41s
+
+ ■■■■■■■■■■■■■■■■■■ 57% | ETA: 41s
+
+
+## ■■■■■■■■■■■■■■■■■■ 57% | ETA: 41s
+
+ ■■■■■■■■■■■■■■■■■■ 57% | ETA: 40s
+
+ ■■■■■■■■■■■■■■■■■■ 57% | ETA: 40s
+
+
+## ■■■■■■■■■■■■■■■■■■ 57% | ETA: 40s
+
+ ■■■■■■■■■■■■■■■■■■ 58% | ETA: 40s
+
+ ■■■■■■■■■■■■■■■■■■ 58% | ETA: 39s
+
+
+## ■■■■■■■■■■■■■■■■■■ 58% | ETA: 39s
+
+ ■■■■■■■■■■■■■■■■■■ 58% | ETA: 39s
+
+ ■■■■■■■■■■■■■■■■■■■ 59% | ETA: 39s
+
+
+## ■■■■■■■■■■■■■■■■■■■ 59% | ETA: 39s
+
+ ■■■■■■■■■■■■■■■■■■■ 59% | ETA: 38s
+
+ ■■■■■■■■■■■■■■■■■■■ 59% | ETA: 38s
+
+
+## ■■■■■■■■■■■■■■■■■■■ 60% | ETA: 38s
+
+ ■■■■■■■■■■■■■■■■■■■ 60% | ETA: 38s
+
+ ■■■■■■■■■■■■■■■■■■■ 60% | ETA: 38s
+
+
+## ■■■■■■■■■■■■■■■■■■■ 60% | ETA: 37s
+
+ ■■■■■■■■■■■■■■■■■■■ 60% | ETA: 37s
+
+ ■■■■■■■■■■■■■■■■■■■ 61% | ETA: 40s
+
+
+## ■■■■■■■■■■■■■■■■■■■ 61% | ETA: 39s
+
+ ■■■■■■■■■■■■■■■■■■■ 61% | ETA: 39s
+
+ ■■■■■■■■■■■■■■■■■■■ 61% | ETA: 39s
+
+
+## ■■■■■■■■■■■■■■■■■■■ 61% | ETA: 39s
+
+ ■■■■■■■■■■■■■■■■■■■ 62% | ETA: 39s
+
+ ■■■■■■■■■■■■■■■■■■■■ 62% | ETA:
+## 38s
+
+ ■■■■■■■■■■■■■■■■■■■■ 62% | ETA: 38s
+
+ ■■■■■■■■■■■■■■■■■■■■ 62% | ETA: 38s
+
+ ■■■■■■■■■■■■■■■■■■■■ 63% |
+## ETA: 38s
+
+ ■■■■■■■■■■■■■■■■■■■■ 63% | ETA: 37s
+
+ ■■■■■■■■■■■■■■■■■■■■ 63% | ETA: 37s
+
+ ■■■■■■■■■■■■■■■■■■■■
+## 63% | ETA: 37s
+
+ ■■■■■■■■■■■■■■■■■■■■ 63% | ETA: 37s
+
+ ■■■■■■■■■■■■■■■■■■■■ 64% | ETA: 36s
+
+
+## ■■■■■■■■■■■■■■■■■■■■ 64% | ETA: 36s
+
+ ■■■■■■■■■■■■■■■■■■■■ 64% | ETA: 36s
+
+ ■■■■■■■■■■■■■■■■■■■■ 64% | ETA:
+## 36s
+
+ ■■■■■■■■■■■■■■■■■■■■ 64% | ETA: 36s
+
+ ■■■■■■■■■■■■■■■■■■■■ 65% | ETA: 35s
+
+ ■■■■■■■■■■■■■■■■■■■■ 65% |
+## ETA: 35s
+
+ ■■■■■■■■■■■■■■■■■■■■■ 65% | ETA: 35s
+
+ ■■■■■■■■■■■■■■■■■■■■■ 65% | ETA: 35s
+
+ ■■■■■■■■■■■■■■■■■■■■■
+## 66% | ETA: 34s
+
+ ■■■■■■■■■■■■■■■■■■■■■ 66% | ETA: 34s
+
+ ■■■■■■■■■■■■■■■■■■■■■ 66% | ETA: 34s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■ 66% | ETA: 34s
+
+ ■■■■■■■■■■■■■■■■■■■■■ 67% | ETA: 33s
+
+ ■■■■■■■■■■■■■■■■■■■■■ 67% |
+## ETA: 33s
+
+ ■■■■■■■■■■■■■■■■■■■■■ 67% | ETA: 33s
+
+ ■■■■■■■■■■■■■■■■■■■■■ 67% | ETA: 33s
+
+ ■■■■■■■■■■■■■■■■■■■■■
+## 67% | ETA: 32s
+
+ ■■■■■■■■■■■■■■■■■■■■■ 68% | ETA: 32s
+
+ ■■■■■■■■■■■■■■■■■■■■■ 68% | ETA: 32s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■ 68% | ETA: 32s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 68% | ETA: 31s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 69% |
+## ETA: 31s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 69% | ETA: 31s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 69% | ETA: 31s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■ 69% | ETA: 30s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 70% | ETA: 30s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 70% |
+## ETA: 30s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 70% | ETA: 30s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 70% | ETA: 29s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■ 71% | ETA: 29s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 71% | ETA: 29s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 71% |
+## ETA: 29s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 71% | ETA: 28s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 71% | ETA: 28s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■ 72% | ETA: 28s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■ 72% | ETA: 28s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■
+## 72% | ETA: 27s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■ 72% | ETA: 27s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■ 73% | ETA: 27s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■ 73% | ETA: 27s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■ 73% | ETA: 27s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■
+## 73% | ETA: 26s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■ 74% | ETA: 26s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■ 74% | ETA: 26s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■ 74% | ETA: 26s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■ 74% | ETA: 25s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■
+## 74% | ETA: 25s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■ 75% | ETA: 25s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■ 75% | ETA: 25s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■ 75% | ETA: 24s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■ 75% | ETA: 24s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■
+## 76% | ETA: 24s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■ 76% | ETA: 24s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■ 76% | ETA: 23s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■ 76% | ETA: 23s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■ 77% | ETA: 23s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■
+## 77% | ETA: 23s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■ 77% | ETA: 22s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■ 77% | ETA: 22s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■ 78% | ETA: 22s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■ 78% | ETA: 22s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■
+## 78% | ETA: 22s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■ 78% | ETA: 21s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■ 78% | ETA: 21s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■ 79% | ETA: 21s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■ 79% | ETA: 21s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■ 79% | ETA: 20s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■ 79% | ETA: 20s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■ 80% | ETA: 20s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■ 80% | ETA: 20s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■ 80% | ETA: 19s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■ 80% | ETA: 19s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■ 81% | ETA: 19s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■ 81% | ETA: 19s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■ 81% | ETA: 19s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■ 81% | ETA: 18s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■ 81% | ETA: 18s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■ 82% | ETA: 18s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■ 82% | ETA: 18s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■ 82% | ETA: 17s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■ 82% | ETA: 17s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■ 83% | ETA: 17s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■ 83% | ETA: 17s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■ 83% | ETA: 16s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■ 83% | ETA: 16s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■ 84% | ETA: 16s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■ 84% | ETA: 16s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■ 84% | ETA: 15s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■ 84% | ETA: 15s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■ 85% | ETA: 15s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■ 85% | ETA: 15s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 85% | ETA: 15s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 85% | ETA: 14s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 85% | ETA: 14s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 86% | ETA: 14s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 86% | ETA: 14s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 86% | ETA: 13s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 86% | ETA: 13s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 87% | ETA: 13s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 87% | ETA: 13s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 87% | ETA: 12s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 87% | ETA: 12s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 88% | ETA: 12s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 88% | ETA: 12s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 88% | ETA: 12s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 88% | ETA: 11s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 89% | ETA: 11s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 89% | ETA: 11s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 89% | ETA: 11s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 89% | ETA: 10s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 89% | ETA: 10s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 90% | ETA: 10s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 90% | ETA: 10s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 90% | ETA: 10s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 90% | ETA: 9s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 91% | ETA: 9s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 91% | ETA: 9s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 91% | ETA: 9s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 91% | ETA: 8s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 92% | ETA: 8s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 92% | ETA: 8s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 92% | ETA: 8s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 92% | ETA: 7s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 93% | ETA: 7s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 93% | ETA: 7s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 93% | ETA: 7s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 93% | ETA: 6s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 94% | ETA: 6s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 94% | ETA: 6s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 94% | ETA: 6s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 94% | ETA: 6s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 94% | ETA: 5s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 95% | ETA: 5s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 95% | ETA: 5s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 95% | ETA: 5s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 95% | ETA: 4s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 96% | ETA: 4s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 96% | ETA: 4s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 96% | ETA: 4s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 96% | ETA: 4s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 97% | ETA: 3s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 97% | ETA: 3s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 97% | ETA: 3s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 97% | ETA: 3s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 98% | ETA: 2s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 98% | ETA: 2s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 98% | ETA: 2s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 98% | ETA: 2s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 98% | ETA: 1s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 99% | ETA: 1s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 99% | ETA: 1s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 99% | ETA: 1s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 99% | ETA: 1s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 100% | ETA: 0s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 100% | ETA: 0s
+
+</code></pre>
+<pre class="r"><code>db_nsf &lt;- add_clean_nsf_award_id(db_nsf)</code></pre>
 <pre class="r"><code>db_nsf |&gt;
   dplyr::select(vol_id, award) |&gt;
   knitr::kable(format = &#39;html&#39;) |&gt;
@@ -1194,7 +2228,158 @@ BCS #1941449
 </div>
 <div id="extract-details-from-nsf-1" class="section level3">
 <h3>Extract details from NSF</h3>
+<pre class="r"><code>message(&quot;Adding funding details from NSF.gov&quot;)</code></pre>
+<pre><code>## Adding funding details from NSF.gov</code></pre>
 <pre class="r"><code>nsf &lt;- get_mult_nsf_awards(db_nsf$award_id, vb = params$vb)</code></pre>
+<pre><code>## ■■ 5% | ETA: 28s</code></pre>
+<pre><code>## ■■■ 6% | ETA: 28s
+
+ ■■■ 8% | ETA: 27s
+
+ ■■■■ 9% | ETA: 27s
+
+ ■■■■ 11% | ETA: 26s
+
+ ■■■■■ 12% | ETA: 25s
+
+ ■■■■■
+## 14% | ETA: 25s
+
+ ■■■■■■ 15% | ETA: 25s
+
+ ■■■■■■ 17% | ETA: 24s
+
+ ■■■■■■■ 18% | ETA: 24s
+
+ ■■■■■■■ 20% | ETA: 23s
+
+
+## ■■■■■■■ 22% | ETA: 23s
+
+ ■■■■■■■■ 23% | ETA: 22s
+
+ ■■■■■■■■ 25% | ETA: 22s
+
+ ■■■■■■■■■ 26% | ETA: 22s
+
+
+## ■■■■■■■■■ 28% | ETA: 22s
+
+ ■■■■■■■■■■ 29% | ETA: 21s
+
+ ■■■■■■■■■■ 31% | ETA: 21s
+
+ ■■■■■■■■■■■ 32% | ETA: 20s
+
+
+## ■■■■■■■■■■■ 34% | ETA: 20s
+
+ ■■■■■■■■■■■■ 35% | ETA: 19s
+
+ ■■■■■■■■■■■■ 37% | ETA: 19s
+
+ ■■■■■■■■■■■■■ 38% |
+## ETA: 18s
+
+ ■■■■■■■■■■■■■ 40% | ETA: 18s
+
+ ■■■■■■■■■■■■■ 42% | ETA: 17s
+
+ ■■■■■■■■■■■■■■ 43% | ETA: 17s
+
+
+## ■■■■■■■■■■■■■■ 45% | ETA: 16s
+
+ ■■■■■■■■■■■■■■■ 46% | ETA: 16s
+
+ ■■■■■■■■■■■■■■■ 48% | ETA: 15s
+
+
+## ■■■■■■■■■■■■■■■■ 49% | ETA: 15s
+
+ ■■■■■■■■■■■■■■■■ 51% | ETA: 15s
+
+ ■■■■■■■■■■■■■■■■■ 52% | ETA: 14s
+
+
+## ■■■■■■■■■■■■■■■■■ 54% | ETA: 14s
+
+ ■■■■■■■■■■■■■■■■■■ 55% | ETA: 13s
+
+ ■■■■■■■■■■■■■■■■■■ 57% | ETA: 13s
+
+
+## ■■■■■■■■■■■■■■■■■■■ 58% | ETA: 12s
+
+ ■■■■■■■■■■■■■■■■■■■ 60% | ETA: 12s
+
+ ■■■■■■■■■■■■■■■■■■■ 62% | ETA: 11s
+
+
+## ■■■■■■■■■■■■■■■■■■■■ 63% | ETA: 11s
+
+ ■■■■■■■■■■■■■■■■■■■■ 65% | ETA: 10s
+
+ ■■■■■■■■■■■■■■■■■■■■■ 66% | ETA:
+## 10s
+
+ ■■■■■■■■■■■■■■■■■■■■■ 68% | ETA: 10s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 69% | ETA: 9s
+
+ ■■■■■■■■■■■■■■■■■■■■■■ 71%
+## | ETA: 9s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■ 72% | ETA: 8s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■ 74% | ETA: 8s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■ 75% | ETA: 7s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■ 77% | ETA: 7s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■
+## 78% | ETA: 6s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■ 80% | ETA: 6s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■ 82% | ETA: 5s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■ 83% | ETA: 5s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■ 85% | ETA: 5s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 86% | ETA: 4s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■ 88% | ETA: 4s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 89% | ETA: 3s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 91% | ETA: 3s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 92% | ETA: 2s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 94% | ETA: 2s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 95% | ETA: 1s
+
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 97% | ETA: 1s
+
+
+## ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 98% | ETA: 0s
+
+</code></pre>
+</div>
+<div id="clean-data" class="section level3">
+<h3>Clean data</h3>
+<pre class="r"><code>nsf &lt;- nsf |&gt;
+  dplyr::mutate(awardeeCity = stringr::str_to_title(awardeeCity))</code></pre>
 <pre class="r"><code>nsf |&gt;
   dplyr::select(-agency) |&gt;
   dplyr::arrange(awardeeName, desc(date)) |&gt;
@@ -1214,7 +2399,7 @@ awardeeName
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 awardeeStateCode
 </th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 fundsObligatedAmt
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
@@ -1226,7 +2411,7 @@ piFirstName
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 piLastName
 </th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 publicAccessMandate
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
@@ -1240,7 +2425,7 @@ title
 <tbody>
 <tr>
 <td style="text-align:left;">
-PROVIDENCE
+Providence
 </td>
 <td style="text-align:left;">
 Brown University
@@ -1248,7 +2433,7 @@ Brown University
 <td style="text-align:left;">
 RI
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 817795
 </td>
 <td style="text-align:left;">
@@ -1260,7 +2445,7 @@ David
 <td style="text-align:left;">
 Sobel
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -1273,7 +2458,7 @@ revision in the lab and in museums
 </tr>
 <tr>
 <td style="text-align:left;">
-PROVIDENCE
+Providence
 </td>
 <td style="text-align:left;">
 Brown University
@@ -1281,7 +2466,7 @@ Brown University
 <td style="text-align:left;">
 RI
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 817795
 </td>
 <td style="text-align:left;">
@@ -1293,7 +2478,7 @@ David
 <td style="text-align:left;">
 Sobel
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -1306,7 +2491,7 @@ revision in the lab and in museums
 </tr>
 <tr>
 <td style="text-align:left;">
-PROVIDENCE
+Providence
 </td>
 <td style="text-align:left;">
 Brown University
@@ -1314,7 +2499,7 @@ Brown University
 <td style="text-align:left;">
 RI
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 817795
 </td>
 <td style="text-align:left;">
@@ -1326,7 +2511,7 @@ David
 <td style="text-align:left;">
 Sobel
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -1347,7 +2532,7 @@ CUNY City College
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 565918
 </td>
 <td style="text-align:left;">
@@ -1359,7 +2544,7 @@ YingLi
 <td style="text-align:left;">
 Tian
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1372,7 +2557,7 @@ Learning American Sign Language through Multisensory Recognition
 </tr>
 <tr>
 <td style="text-align:left;">
-STATEN ISLAND
+Staten Island
 </td>
 <td style="text-align:left;">
 CUNY College of Staten Island
@@ -1380,7 +2565,7 @@ CUNY College of Staten Island
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 77355
 </td>
 <td style="text-align:left;">
@@ -1392,7 +2577,7 @@ Lana
 <td style="text-align:left;">
 Karasik
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1413,7 +2598,7 @@ CUNY Hunter College
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 120000
 </td>
 <td style="text-align:left;">
@@ -1425,7 +2610,7 @@ Elaine
 <td style="text-align:left;">
 Gale
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1438,7 +2623,7 @@ Learning American Sign Language through Multisensory Recognition
 </tr>
 <tr>
 <td style="text-align:left;">
-FORT COLLINS
+Fort Collins
 </td>
 <td style="text-align:left;">
 Colorado State University
@@ -1446,7 +2631,7 @@ Colorado State University
 <td style="text-align:left;">
 CO
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 12741385
 </td>
 <td style="text-align:left;">
@@ -1458,7 +2643,7 @@ Mazdak
 <td style="text-align:left;">
 Arabi
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1479,7 +2664,7 @@ Kosie, Jessica Elizabeth
 <td style="text-align:left;">
 NJ
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 69000
 </td>
 <td style="text-align:left;">
@@ -1491,7 +2676,7 @@ Jessica
 <td style="text-align:left;">
 Kosie
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -1504,7 +2689,7 @@ across the socioeconomic spectrum
 </tr>
 <tr>
 <td style="text-align:left;">
-EAST LANSING
+East Lansing
 </td>
 <td style="text-align:left;">
 Michigan State University
@@ -1512,7 +2697,7 @@ Michigan State University
 <td style="text-align:left;">
 MI
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 254004
 </td>
 <td style="text-align:left;">
@@ -1524,7 +2709,7 @@ Kimberly
 <td style="text-align:left;">
 Fenn
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1545,7 +2730,7 @@ Museum of Science
 <td style="text-align:left;">
 MA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 2999827
 </td>
 <td style="text-align:left;">
@@ -1557,7 +2742,7 @@ Christine
 <td style="text-align:left;">
 Cunningham
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1569,7 +2754,7 @@ Exploring the Efficacy of Engineering is Elementary (E4)
 </tr>
 <tr>
 <td style="text-align:left;">
-NEW YORK
+New York
 </td>
 <td style="text-align:left;">
 New York University
@@ -1577,7 +2762,7 @@ New York University
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 2665719
 </td>
 <td style="text-align:left;">
@@ -1589,7 +2774,7 @@ Karen
 <td style="text-align:left;">
 Adolph
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1602,7 +2787,7 @@ science
 </tr>
 <tr>
 <td style="text-align:left;">
-NEW YORK
+New York
 </td>
 <td style="text-align:left;">
 New York University
@@ -1610,7 +2795,7 @@ New York University
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 600000
 </td>
 <td style="text-align:left;">
@@ -1622,7 +2807,7 @@ Catherine
 <td style="text-align:left;">
 Tamis-LeMonda
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -1635,7 +2820,7 @@ Families: Contributions Of Home Experiences With Mothers and Fathers
 </tr>
 <tr>
 <td style="text-align:left;">
-NEW YORK
+New York
 </td>
 <td style="text-align:left;">
 New York University
@@ -1643,7 +2828,7 @@ New York University
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 2500000
 </td>
 <td style="text-align:left;">
@@ -1655,7 +2840,7 @@ Catherine
 <td style="text-align:left;">
 Tamis-LeMonda
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1668,7 +2853,7 @@ across School Transitions
 </tr>
 <tr>
 <td style="text-align:left;">
-NEW YORK
+New York
 </td>
 <td style="text-align:left;">
 New York University
@@ -1676,7 +2861,7 @@ New York University
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 293783
 </td>
 <td style="text-align:left;">
@@ -1688,7 +2873,7 @@ Karen
 <td style="text-align:left;">
 Adolph
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1701,7 +2886,7 @@ action production and anticipation in action perception
 </tr>
 <tr>
 <td style="text-align:left;">
-NEW YORK
+New York
 </td>
 <td style="text-align:left;">
 New York University
@@ -1709,7 +2894,7 @@ New York University
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 293783
 </td>
 <td style="text-align:left;">
@@ -1721,7 +2906,7 @@ Karen
 <td style="text-align:left;">
 Adolph
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1734,7 +2919,7 @@ action production and anticipation in action perception
 </tr>
 <tr>
 <td style="text-align:left;">
-NEW YORK
+New York
 </td>
 <td style="text-align:left;">
 New York University
@@ -1742,7 +2927,7 @@ New York University
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 293783
 </td>
 <td style="text-align:left;">
@@ -1754,7 +2939,7 @@ Karen
 <td style="text-align:left;">
 Adolph
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1767,7 +2952,7 @@ action production and anticipation in action perception
 </tr>
 <tr>
 <td style="text-align:left;">
-NEW YORK
+New York
 </td>
 <td style="text-align:left;">
 New York University
@@ -1775,7 +2960,7 @@ New York University
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 337975
 </td>
 <td style="text-align:left;">
@@ -1787,7 +2972,7 @@ Marjorie
 <td style="text-align:left;">
 Rhodes
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1799,7 +2984,7 @@ The role of within-category variability in the development of induction
 </tr>
 <tr>
 <td style="text-align:left;">
-NEW YORK
+New York
 </td>
 <td style="text-align:left;">
 New York University
@@ -1807,7 +2992,7 @@ New York University
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 495472
 </td>
 <td style="text-align:left;">
@@ -1819,7 +3004,7 @@ David
 <td style="text-align:left;">
 Poeppel
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -1831,7 +3016,7 @@ Audiomotor Speech Rhythms and Their Perceptual Consequences
 </tr>
 <tr>
 <td style="text-align:left;">
-BOSTON
+Boston
 </td>
 <td style="text-align:left;">
 Northeastern University
@@ -1839,7 +3024,7 @@ Northeastern University
 <td style="text-align:left;">
 MA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 234794
 </td>
 <td style="text-align:left;">
@@ -1851,7 +3036,7 @@ Laura
 <td style="text-align:left;">
 Senier
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -1873,7 +3058,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 800000
 </td>
 <td style="text-align:left;">
@@ -1885,7 +3070,7 @@ Yanxi
 <td style="text-align:left;">
 Liu
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1906,7 +3091,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 800000
 </td>
 <td style="text-align:left;">
@@ -1918,7 +3103,7 @@ Yanxi
 <td style="text-align:left;">
 Liu
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1939,7 +3124,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 11668917
 </td>
 <td style="text-align:left;">
@@ -1951,7 +3136,7 @@ Michael
 <td style="text-align:left;">
 Verderame
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -1971,7 +3156,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 354257
 </td>
 <td style="text-align:left;">
@@ -1983,7 +3168,7 @@ Bradley
 <td style="text-align:left;">
 Wyble
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2003,7 +3188,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 385000
 </td>
 <td style="text-align:left;">
@@ -2015,7 +3200,7 @@ Rick
 <td style="text-align:left;">
 Gilmore
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2035,7 +3220,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 385000
 </td>
 <td style="text-align:left;">
@@ -2047,7 +3232,7 @@ Rick
 <td style="text-align:left;">
 Gilmore
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2067,7 +3252,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 385000
 </td>
 <td style="text-align:left;">
@@ -2079,7 +3264,7 @@ Rick
 <td style="text-align:left;">
 Gilmore
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2099,7 +3284,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 385000
 </td>
 <td style="text-align:left;">
@@ -2111,7 +3296,7 @@ Rick
 <td style="text-align:left;">
 Gilmore
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2131,7 +3316,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 385000
 </td>
 <td style="text-align:left;">
@@ -2143,7 +3328,7 @@ Rick
 <td style="text-align:left;">
 Gilmore
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2163,7 +3348,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 385000
 </td>
 <td style="text-align:left;">
@@ -2175,7 +3360,7 @@ Rick
 <td style="text-align:left;">
 Gilmore
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2195,7 +3380,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 385000
 </td>
 <td style="text-align:left;">
@@ -2207,7 +3392,7 @@ Rick
 <td style="text-align:left;">
 Gilmore
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2227,7 +3412,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 385000
 </td>
 <td style="text-align:left;">
@@ -2239,7 +3424,7 @@ Rick
 <td style="text-align:left;">
 Gilmore
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2259,7 +3444,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 385000
 </td>
 <td style="text-align:left;">
@@ -2271,7 +3456,7 @@ Rick
 <td style="text-align:left;">
 Gilmore
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2291,7 +3476,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 397307
 </td>
 <td style="text-align:left;">
@@ -2303,7 +3488,7 @@ Rick
 <td style="text-align:left;">
 Gilmore
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2323,7 +3508,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 397307
 </td>
 <td style="text-align:left;">
@@ -2335,7 +3520,7 @@ Rick
 <td style="text-align:left;">
 Gilmore
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2355,7 +3540,7 @@ Pennsylvania State Univ University Park
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 460814
 </td>
 <td style="text-align:left;">
@@ -2367,7 +3552,7 @@ Michelle
 <td style="text-align:left;">
 Vigeant
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2380,7 +3565,7 @@ Envelopment to Room Acoustic Quality and Design
 </tr>
 <tr>
 <td style="text-align:left;">
-ROCHESTER
+Rochester
 </td>
 <td style="text-align:left;">
 Rochester Institute of Tech
@@ -2388,7 +3573,7 @@ Rochester Institute of Tech
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 537997
 </td>
 <td style="text-align:left;">
@@ -2400,7 +3585,7 @@ Matt
 <td style="text-align:left;">
 Huenerfauth
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2413,7 +3598,7 @@ Learning American Sign Language through Multisensory Recognition
 </tr>
 <tr>
 <td style="text-align:left;">
-ROCHESTER
+Rochester
 </td>
 <td style="text-align:left;">
 Rochester Institute of Tech
@@ -2421,7 +3606,7 @@ Rochester Institute of Tech
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 537997
 </td>
 <td style="text-align:left;">
@@ -2433,7 +3618,7 @@ Matt
 <td style="text-align:left;">
 Huenerfauth
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2446,7 +3631,7 @@ Learning American Sign Language through Multisensory Recognition
 </tr>
 <tr>
 <td style="text-align:left;">
-ROCHESTER
+Rochester
 </td>
 <td style="text-align:left;">
 Rochester Institute of Tech
@@ -2454,7 +3639,7 @@ Rochester Institute of Tech
 <td style="text-align:left;">
 NY
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 349882
 </td>
 <td style="text-align:left;">
@@ -2466,7 +3651,7 @@ Matthew
 <td style="text-align:left;">
 Dye
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -2479,7 +3664,7 @@ Perceptual Constraints on Natural Language Evolution
 </tr>
 <tr>
 <td style="text-align:left;">
-NEWARK
+Newark
 </td>
 <td style="text-align:left;">
 Rutgers University Newark
@@ -2487,7 +3672,7 @@ Rutgers University Newark
 <td style="text-align:left;">
 NJ
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 284473
 </td>
 <td style="text-align:left;">
@@ -2499,7 +3684,7 @@ Vanessa
 <td style="text-align:left;">
 LoBue
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2511,7 +3696,7 @@ Validation of the Child Affective Facial Expressions Set (CAFE)
 </tr>
 <tr>
 <td style="text-align:left;">
-DAVIS
+Davis
 </td>
 <td style="text-align:left;">
 University of California-Davis
@@ -2519,7 +3704,7 @@ University of California-Davis
 <td style="text-align:left;">
 CA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 305523
 </td>
 <td style="text-align:left;">
@@ -2531,7 +3716,7 @@ Lisa
 <td style="text-align:left;">
 Oakes
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2543,7 +3728,7 @@ Experience and cognitive development in infancy
 </tr>
 <tr>
 <td style="text-align:left;">
-LOS ANGELES
+Los Angeles
 </td>
 <td style="text-align:left;">
 University of California-Los Angeles
@@ -2551,7 +3736,7 @@ University of California-Los Angeles
 <td style="text-align:left;">
 CA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 555792
 </td>
 <td style="text-align:left;">
@@ -2563,7 +3748,7 @@ Hongjing
 <td style="text-align:left;">
 Lu
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -2575,7 +3760,7 @@ Discovering Hierarchical Representations for Action Understanding
 </tr>
 <tr>
 <td style="text-align:left;">
-RIVERSIDE
+Riverside
 </td>
 <td style="text-align:left;">
 University of California-Riverside
@@ -2583,7 +3768,7 @@ University of California-Riverside
 <td style="text-align:left;">
 CA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 631076
 </td>
 <td style="text-align:left;">
@@ -2595,7 +3780,7 @@ John
 <td style="text-align:left;">
 Franchak
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -2616,7 +3801,7 @@ University of California-San Diego
 <td style="text-align:left;">
 CA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 2650000
 </td>
 <td style="text-align:left;">
@@ -2628,7 +3813,7 @@ Javier
 <td style="text-align:left;">
 Movellan
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2648,7 +3833,7 @@ University of Chicago
 <td style="text-align:left;">
 IL
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 377342
 </td>
 <td style="text-align:left;">
@@ -2660,7 +3845,7 @@ Amanda
 <td style="text-align:left;">
 Woodward
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2672,7 +3857,7 @@ Collaborative Research: Action, Learning, and Social Cognition
 </tr>
 <tr>
 <td style="text-align:left;">
-GAINESVILLE
+Gainesville
 </td>
 <td style="text-align:left;">
 University of Florida
@@ -2680,7 +3865,7 @@ University of Florida
 <td style="text-align:left;">
 FL
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 202503
 </td>
 <td style="text-align:left;">
@@ -2692,7 +3877,7 @@ Lisa
 <td style="text-align:left;">
 Scott
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2704,7 +3889,7 @@ CAREER:Perceptual Narrowing and Cortical Development in Infancy
 </tr>
 <tr>
 <td style="text-align:left;">
-GAINESVILLE
+Gainesville
 </td>
 <td style="text-align:left;">
 University of Florida
@@ -2712,7 +3897,7 @@ University of Florida
 <td style="text-align:left;">
 FL
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 202503
 </td>
 <td style="text-align:left;">
@@ -2724,7 +3909,7 @@ Lisa
 <td style="text-align:left;">
 Scott
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2736,7 +3921,7 @@ CAREER:Perceptual Narrowing and Cortical Development in Infancy
 </tr>
 <tr>
 <td style="text-align:left;">
-GAINESVILLE
+Gainesville
 </td>
 <td style="text-align:left;">
 University of Florida
@@ -2744,7 +3929,7 @@ University of Florida
 <td style="text-align:left;">
 FL
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 202503
 </td>
 <td style="text-align:left;">
@@ -2756,7 +3941,7 @@ Lisa
 <td style="text-align:left;">
 Scott
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2768,7 +3953,7 @@ CAREER:Perceptual Narrowing and Cortical Development in Infancy
 </tr>
 <tr>
 <td style="text-align:left;">
-GAINESVILLE
+Gainesville
 </td>
 <td style="text-align:left;">
 University of Florida
@@ -2776,7 +3961,7 @@ University of Florida
 <td style="text-align:left;">
 FL
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 516424
 </td>
 <td style="text-align:left;">
@@ -2788,7 +3973,7 @@ Lisa
 <td style="text-align:left;">
 Scott
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -2800,7 +3985,7 @@ Reliable and Robust Infant Brain Responses During Face Learning
 </tr>
 <tr>
 <td style="text-align:left;">
-IOWA CITY
+Iowa City
 </td>
 <td style="text-align:left;">
 University of Iowa
@@ -2808,7 +3993,7 @@ University of Iowa
 <td style="text-align:left;">
 IA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 249592
 </td>
 <td style="text-align:left;">
@@ -2820,7 +4005,7 @@ Susan
 <td style="text-align:left;">
 Cook
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2833,7 +4018,7 @@ Improving Outcomes by Harnessing Multiple Memory Representations
 </tr>
 <tr>
 <td style="text-align:left;">
-AMHERST
+Amherst
 </td>
 <td style="text-align:left;">
 University of Massachusetts Amherst
@@ -2841,7 +4026,7 @@ University of Massachusetts Amherst
 <td style="text-align:left;">
 MA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 472086
 </td>
 <td style="text-align:left;">
@@ -2853,7 +4038,7 @@ Lisa
 <td style="text-align:left;">
 Scott
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2865,7 +4050,7 @@ CAREER:Perceptual Narrowing and Cortical Development in Infancy
 </tr>
 <tr>
 <td style="text-align:left;">
-AMHERST
+Amherst
 </td>
 <td style="text-align:left;">
 University of Massachusetts Amherst
@@ -2873,7 +4058,7 @@ University of Massachusetts Amherst
 <td style="text-align:left;">
 MA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 472086
 </td>
 <td style="text-align:left;">
@@ -2885,7 +4070,7 @@ Lisa
 <td style="text-align:left;">
 Scott
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2897,7 +4082,7 @@ CAREER:Perceptual Narrowing and Cortical Development in Infancy
 </tr>
 <tr>
 <td style="text-align:left;">
-AMHERST
+Amherst
 </td>
 <td style="text-align:left;">
 University of Massachusetts Amherst
@@ -2905,7 +4090,7 @@ University of Massachusetts Amherst
 <td style="text-align:left;">
 MA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 472086
 </td>
 <td style="text-align:left;">
@@ -2917,7 +4102,7 @@ Lisa
 <td style="text-align:left;">
 Scott
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2929,7 +4114,7 @@ CAREER:Perceptual Narrowing and Cortical Development in Infancy
 </tr>
 <tr>
 <td style="text-align:left;">
-CORAL GABLES
+Coral Gables
 </td>
 <td style="text-align:left;">
 University of Miami
@@ -2937,7 +4122,7 @@ University of Miami
 <td style="text-align:left;">
 FL
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 869999
 </td>
 <td style="text-align:left;">
@@ -2949,7 +4134,7 @@ Daniel
 <td style="text-align:left;">
 Messinger
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2962,7 +4147,7 @@ Development of Social Dynamics
 </tr>
 <tr>
 <td style="text-align:left;">
-CORAL GABLES
+Coral Gables
 </td>
 <td style="text-align:left;">
 University of Miami
@@ -2970,7 +4155,7 @@ University of Miami
 <td style="text-align:left;">
 FL
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 202002
 </td>
 <td style="text-align:left;">
@@ -2982,7 +4167,7 @@ Daniel
 <td style="text-align:left;">
 Messinger
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -2995,7 +4180,7 @@ Development
 </tr>
 <tr>
 <td style="text-align:left;">
-CORAL GABLES
+Coral Gables
 </td>
 <td style="text-align:left;">
 University of Miami
@@ -3003,7 +4188,7 @@ University of Miami
 <td style="text-align:left;">
 FL
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 202002
 </td>
 <td style="text-align:left;">
@@ -3015,7 +4200,7 @@ Daniel
 <td style="text-align:left;">
 Messinger
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
@@ -3036,7 +4221,7 @@ Villanova University
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 482889
 </td>
 <td style="text-align:left;">
@@ -3048,7 +4233,7 @@ DEENA
 <td style="text-align:left;">
 WEISBERG
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -3069,7 +4254,7 @@ Villanova University
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 482889
 </td>
 <td style="text-align:left;">
@@ -3081,7 +4266,7 @@ DEENA
 <td style="text-align:left;">
 WEISBERG
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -3102,7 +4287,7 @@ Villanova University
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 482889
 </td>
 <td style="text-align:left;">
@@ -3114,7 +4299,7 @@ DEENA
 <td style="text-align:left;">
 WEISBERG
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -3135,7 +4320,7 @@ Villanova University
 <td style="text-align:left;">
 PA
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 482889
 </td>
 <td style="text-align:left;">
@@ -3147,7 +4332,7 @@ DEENA
 <td style="text-align:left;">
 WEISBERG
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -3259,10 +4444,21 @@ Robin Hood Foundation: Routine Language in Hispanic Families
 </tbody>
 </table>
 </div>
+<p>A next step would be to identify the PIs on these volumes and contact
+them.</p>
 </div>
 </div>
-<div id="todo-merge-nsf-and-databrary-info" class="section level2">
-<h2>(TODO) Merge NSF and Databrary info</h2>
+<div id="cleanup" class="section level2">
+<h2>Cleanup</h2>
+<pre class="r"><code>databraryapi::logout_db()</code></pre>
+<pre><code>## Logout Successful.</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>In a form that permits us to query the NSF API.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
 
 
