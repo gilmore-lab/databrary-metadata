@@ -1,9 +1,10 @@
 ---
-title: "NSF Projects on Databrary"
+title: "NSF funding in Databrary projects"
+author: "Rick Gilmore"
 output: html_document
 date: "`r Sys.Date()`"
 params:
-  max_vol_id: 1603
+  max_vol_id: 1626
   vb: TRUE
   import_saved: TRUE
   eval_test: FALSE
@@ -20,7 +21,7 @@ This document describes the process for providing full funding data for projects
 Databrary stores a funding name, and a text field with the award ID, but it does not include the project title, funding amount, or other data related to an award.
 That data is available, however, from the NSF.
 
-This document uses the `databraryapi` package to extract information about the projects (volumes) that list NSF as a funder and then pulls additional data from the NSF's data via the NSF API.
+This document uses the `databraryapi` (soon to be moved to the `databrary/databraryr` package to extract information about the projects (volumes) that list NSF as a funder and then pulls additional data from the NSF's data via the NSF API.
 
 Most of the work is done via functions listed in `R/functions.R`.
 
@@ -30,118 +31,67 @@ source("R/functions.R")
 
 ## Preliminary testing
 
-### Extract NSF-funded projects from Databrary
+Information about the preliminary testing and development of these functions can be found in [prep-work.html](prep_work.html).
 
-For efficiency reasons, we test the workflow by limiting the number of Databrary volumes queried.
+## Report on all Databrary volumes
 
-The following chunks have been disabled (`eval = FALSE`).
+### Databrary volumes that mention NSF
 
-```{r retrieve-nsf-vol1-200, eval=params$eval_test}
-vols_1_200 <- get_multiple_vol_nsf_awards(1:200)
+To query Databrary for the volumes that mention an NSF award, we run the following.
+
+```{r, eval=FALSE, message=FALSE, warning=FALSE}
+db_w_nsf <-
+  purrr::map(1:params$max_vol_id,
+             get_vol_awards,
+             funder_str = "NSF",
+             .progress = "Databrary vols w/ NSF:") |> purrr::list_rbind() |>
+  add_clean_nsf_award_id()
 ```
 
-```{r print-vol1-200, eval=FALSE}
-vols_1_200 |>
-  dplyr::select(vol_id, award) |>
-  knitr::kable(format = 'html') |>
-  kableExtra::kable_material()
-```
+The above uses the `get_vol_awards()` function and the `funder_str` parameter to select award information that lists NSF. Then, the NSF award IDs are cleaned to match the NSF format with `add_clean_nsf_award_id()`.
 
-### Extract details from NSF
+This takes several moments, so for this report, we import a previously saved file with this data.
 
-```{r, eval=params$eval_test}
-vols_1_200_clean <- add_clean_nsf_award_id(vols_1_200)
-```
-
-```{r get-nsf-award-info-vol1-200, eval=params$eval_test}
-nsf_vols_1_200 <- get_mult_nsf_awards(vols_1_200_clean$award_id)
-```
-
-```{r print-nsf-vol1-200, eval=params$eval_test}
-nsf_vols_1_200 |>
-  dplyr::select(-agency) |>
-  dplyr::arrange(awardeeName, desc(date)) |>
-  knitr::kable(format = 'html') |>
-  kableExtra::kable_material() |>
-  kableExtra::scroll_box(width = "600px", height = "300px")
-```
-
-### Save data
-
-```{r save-csvs, eval=params$eval_test}
-readr::write_csv(nsf_vols_1_200, "csv/databrary-nsf-funding-details-TEST.csv")
-readr::write_csv(vols_1_200_clean, "csv/databrary-vols-w-nsf-funding-TEST.csv")
-```
-
-### Visualize data
-
-```{r nsf-award-histogram, fig.cap="Histogram of NSF awards for selected Databrary volumes", eval=params$eval_test}
-nsf_vols_1_200 |>
-  dplyr::mutate(award_amt = as.numeric(fundsObligatedAmt)) |>
-  ggplot2::ggplot() +
-  ggplot2::aes(award_amt) +
-  ggplot2::geom_histogram(bins=10)
-```
-
-## Full dataset
-
-### Re-import
-
-We re-import the saved data for visualizations if `params$import_saved` == TRUE`.
-
-```{r import-saved, eval=params$import_saved}
+```{r import-saved-db-nsf, eval=params$import_saved}
 db_nsf <- readr::read_csv("csv/databrary-vols-w-nsf-funding-all.csv", show_col_types = FALSE)
-nsf <- readr::read_csv("csv/databrary-nsf-funding-details-all.csv", show_col_types = FALSE)
 ```
 
-### Extract NSF-funded projects from Databrary
-
-If `params$import_saved` == FALSE`, we regenerate the data.
-
-```{r get-all-db-vols-w-nsf, eval=!params$import_saved}
-message("Regenerating all data.")
-
-message("Gathering NSF-funded projects from Databrary.")
-db_nsf <- get_multiple_vol_nsf_awards(1:params$max_vol_id, vb = params$vb)
-db_nsf <- add_clean_nsf_award_id(db_nsf)
-```
+Then, we can start to visualize the data.
 
 ```{r show-table-databrary-vols-listing-nsf}
 db_nsf |>
-  dplyr::select(vol_id, award) |>
+  dplyr::select(vol_id, award_id, award) |>
   knitr::kable(format = 'html') |>
   kableExtra::kable_material() |>
   kableExtra::scroll_box(width = "600px", height = "300px")
 ```
 
-### Extract details from NSF
+### Databrary volumes with matching NSF data
 
-```{r get-nsf-details-for-all, eval=!params$import_saved}
-message("Adding funding details from NSF.gov")
-nsf <- get_mult_nsf_awards(db_nsf$award_id, vb = params$vb)
+To re-generate a data frame with the Databrary volumes for which we are able to extract more details about the NSF funding from the NSF itself, we run
+
+```{r, eval=FALSE}
+summarize_mult_vol_nsf_awards(1:params$max_vol_id, vb = TRUE)
 ```
 
-### Clean data
+This takes several moments, so for this report, we import a previously saved file.
 
-```{r}
-nsf <- nsf |>
-  dplyr::mutate(awardeeCity = stringr::str_to_title(awardeeCity))
+```{r import-saved, eval=params$import_saved}
+nsf <- readr::read_csv("csv/databrary-nsf-funding-details-all.csv", show_col_types = FALSE)
 ```
+
+Now, we can begin to visualize this, as well:
 
 ```{r show-table-nsf-info}
+nsf <- nsf |>
+   dplyr::filter(!is.na(piLastName), !is.na(piFirstName), !is.na(award_id))
+ 
 nsf |>
-  dplyr::select(-agency) |>
-  dplyr::arrange(awardeeName, desc(date)) |>
+  dplyr::select(piLastName, piFirstName, award_id, date, title, vol_id, fundsObligatedAmt) |>
+  dplyr::arrange(piLastName, award_id, vol_id) |>
   knitr::kable(format = 'html') |>
   kableExtra::kable_material() |>
   kableExtra::scroll_box(width = "600px", height = "300px")
-```
-
-### Save data
-
-```{r save-csvs-all, , eval=!params$import_saved}
-readr::write_csv(nsf, "csv/databrary-nsf-funding-details-all.csv")
-readr::write_csv(db_nsf, "csv/databrary-vols-w-nsf-funding-all.csv")
 ```
 
 ### Visualize
@@ -158,22 +108,22 @@ There are $n=$ `r dim(db_nsf)[1]` Databrary volumes that list NSF as a funder.
 
 These represent $n=$ `r db_nsf$award_id |> na.omit() |> unique() |> length()` unique NSF awards.
 
-Of these, we were able to extract data from the NSF API for $n=$ `r nsf$id |> unique() |> length()` NSF awards.
+Of these, we were able to extract data from the NSF API for $n=$ `r nsf$award_id |> na.omit() |> unique() |> length()` NSF awards.
 
 The following volumes do not have matching NSF awards.
 
 ```{r}
-db_not_found_in_nsf <- !(db_nsf$award_id %in% nsf$id)
+db_not_found_in_nsf <- !(db_nsf$vol_id %in% nsf$vol_id)
 
 db_nsf |>
   dplyr::filter(db_not_found_in_nsf) |>
   dplyr::select(vol_id, award) |>
   knitr::kable(format = 'html') |>
   kableExtra::kable_material() |>
-  kableExtra::scroll_box(width = "600px", height = "300px")
+  kableExtra::scroll_box(width = "600px", height = "200px")
 ```
 
-A next step would be to identify the PIs on these volumes and contact them.
+A next step would be to identify the PIs on these volumes and contact them to rectify the issue.
 
 ## Cleanup
 
